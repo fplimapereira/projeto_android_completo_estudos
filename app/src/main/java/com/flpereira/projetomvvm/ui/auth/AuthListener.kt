@@ -1,9 +1,10 @@
 package com.flpereira.projetomvvm.ui.auth
 
-import androidx.lifecycle.LiveData
+
+import com.flpereira.projetomvvm.data.db.entities.User
 
 interface AuthListener {
     fun onStarted()
-    fun onSucess(loginResponse: LiveData<String>)
+    fun onSucess(user: User)
     fun onFailure(message: String)
 }
