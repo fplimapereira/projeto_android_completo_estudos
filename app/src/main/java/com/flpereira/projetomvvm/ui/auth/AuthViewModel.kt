@@ -2,6 +2,7 @@ package com.flpereira.projetomvvm.ui.auth
 
 import android.view.View
 import androidx.lifecycle.ViewModel
+import com.flpereira.projetomvvm.data.repositories.UserRepository
 
 class AuthViewModel : ViewModel() {
 
@@ -16,7 +17,8 @@ class AuthViewModel : ViewModel() {
             authListener?.onFailure("Invalid email or password")
             return
         }
-        authListener?.onSucess()
+        val loginResponse = UserRepository().userLogin(email!!, password!!)
+        authListener?.onSucess(loginResponse)
 
     }
 }

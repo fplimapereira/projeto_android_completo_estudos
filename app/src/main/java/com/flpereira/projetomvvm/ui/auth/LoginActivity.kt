@@ -2,14 +2,18 @@ package com.flpereira.projetomvvm.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
-import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.flpereira.projetomvvm.R
 import com.flpereira.projetomvvm.databinding.ActivityLoginBinding
+import com.flpereira.projetomvvm.util.hide
+import com.flpereira.projetomvvm.util.show
 import com.flpereira.projetomvvm.util.toast
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,14 +26,18 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     }
 
     override fun onStarted() {
-        toast("Login Started")
+        progress_bar.show()
     }
 
-    override fun onSucess() {
-        toast("Login Sucess")
+    override fun onSucess(loginResponse: LiveData<String>) {
+        loginResponse.observe(this, Observer{
+            progress_bar.hide()
+            toast(it)
+        })
     }
 
     override fun onFailure(message: String) {
+        progress_bar.hide()
         toast(message)
     }
 }
