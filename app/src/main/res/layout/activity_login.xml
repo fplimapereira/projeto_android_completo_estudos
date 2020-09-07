@@ -126,7 +126,8 @@
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@color/colorPrimary"
-                android:gravity="center_horizontal" />
+                    android:onClick="@{viewmodel::onSignup}"
+                    android:gravity="center_horizontal" />
 
         </RelativeLayout>
 

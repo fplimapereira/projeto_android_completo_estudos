@@ -15,7 +15,14 @@ interface MyApi {
     @FormUrlEncoded
     @POST("login")
     suspend fun userLogin(@Field("email") email: String,
-                  @Field("password") password: String): Response<AuthResponse>
+                         @Field("password") password: String): Response<AuthResponse>
+
+    @FormUrlEncoded
+    @POST("signup")
+    suspend fun userSignup(@Field("name") name: String,
+                           @Field("email") email: String,
+                           @Field("password") password: String
+    ): Response<AuthResponse>
 
 
     companion object{
