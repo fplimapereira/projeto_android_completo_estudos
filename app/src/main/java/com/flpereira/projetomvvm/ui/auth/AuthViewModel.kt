@@ -21,7 +21,7 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun onLoginButtonClick(view: View){
         authListener?.onStarted()
-        if(name.isNullOrEmpty() || password.isNullOrEmpty()){
+        if(email.isNullOrEmpty() || password.isNullOrEmpty()){
             authListener?.onFailure("Invalid email or password")
             return
         }
