@@ -4,9 +4,11 @@ import android.app.Application
 import com.flpereira.projetomvvm.data.db.AppDataBase
 import com.flpereira.projetomvvm.data.network.MyApi
 import com.flpereira.projetomvvm.data.network.NetworkConnectionInterceptor
+import com.flpereira.projetomvvm.data.repositories.QuoteRepository
 import com.flpereira.projetomvvm.data.repositories.UserRepository
 import com.flpereira.projetomvvm.ui.auth.AuthViewModelFactory
 import com.flpereira.projetomvvm.ui.home.profile.ProfileViewlModelFactory
+import com.flpereira.projetomvvm.ui.home.quotes.QuotesViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -24,8 +26,10 @@ class MVVMApplication: Application(), KodeinAware {
         bind() from singleton { MyApi(instance()) }
         bind() from singleton { AppDataBase(instance()) }
         bind() from singleton { UserRepository(instance(), instance()) }
+        bind() from singleton { QuoteRepository(instance(), instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
         bind() from provider { ProfileViewlModelFactory(instance()) }
+        bind() from provider { QuotesViewModelFactory(instance()) }
     }
 
 }

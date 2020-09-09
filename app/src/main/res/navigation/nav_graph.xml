@@ -10,4 +10,9 @@
         android:name="com.flpereira.projetomvvm.ui.home.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/QuotesFragment"
+        android:name="com.flpereira.projetomvvm.ui.home.quotes.QuotesFragment"
+        android:label="Quotes"
+        tools:layout="@layout/quotes_fragment" />
 </navigation>
